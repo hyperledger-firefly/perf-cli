@@ -35,11 +35,11 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/hyperledger/firefly-common/pkg/fftypes"
-	"github.com/hyperledger/firefly-common/pkg/wsclient"
-	"github.com/hyperledger/firefly-perf-cli/internal/conf"
-	"github.com/hyperledger/firefly-perf-cli/internal/util"
-	"github.com/hyperledger/firefly/pkg/core"
+	"github.com/hyperledger-firefly/common/pkg/fftypes"
+	"github.com/hyperledger-firefly/common/pkg/wsclient"
+	"github.com/hyperledger-firefly/perf-cli/internal/conf"
+	"github.com/hyperledger-firefly/perf-cli/internal/util"
+	"github.com/hyperledger-firefly/firefly/pkg/core"
 	dto "github.com/prometheus/client_model/go"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sync/errgroup"
@@ -121,7 +121,7 @@ func getMetricVal(collector prometheus.Collector) float64 {
 	metric := dto.Metric{}
 	err := (<-collectorChannel).Write(&metric)
 	if err != nil {
-		log.Error("error writing metric: %s", err)
+		log.Errorf("error writing metric: %s", err)
 	}
 	if metric.Counter != nil {
 		return *metric.Counter.Value
@@ -706,7 +706,7 @@ func (pr *perfRunner) filterEvent(event core.EventDelivery, url string) (workerI
 	switch event.Type {
 	case core.EventTypeBlockchainEventReceived:
 		if event.BlockchainEvent == nil {
-			log.Errorf("\nBlockchain event not found --- Event ID: %s\n\t%d --- Ref: %s", event.ID.String(), event.Reference)
+			log.Errorf("\nBlockchain event not found --- Event ID: %s --- Ref: %s", event.ID.String(), event.Reference)
 			return workerID, fmt.Errorf("blockchain event not found for event: %s", event.ID)
 		}
 		var value string
@@ -738,7 +738,7 @@ func (pr *perfRunner) filterEvent(event core.EventDelivery, url string) (workerI
 					log.Infof("\n\t%d - Received from %s\n\t%d --- Event ID: %s\n\t%d --- Ref: %s", workerID, url, workerID, event.ID.String(), workerID, event.Reference)
 				}
 			} else {
-				log.Errorf("no URI in token transfer event: %s")
+				log.Errorf("no URI in token transfer event: %s", event.ID)
 				b, _ := json.Marshal(&event)
 				log.Errorf("Full event: %s", b)
 
@@ -1611,7 +1611,7 @@ func (pr *perfRunner) createContractsSub(nodeURL, listenerID string) (subID stri
 }
 
 func (pr *perfRunner) constructSubscriptionsOptions() core.SubscriptionOptions {
-	readAhead := uint16(pr.totalWorkers)
+	readAhead := uint(pr.totalWorkers)
 	firstEvent := core.SubOptsFirstEventNewest
 	// Default options
 	options := core.SubscriptionOptions{

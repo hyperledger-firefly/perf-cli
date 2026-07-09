@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/hyperledger/firefly-common/pkg/fftypes"
-	"github.com/hyperledger/firefly/pkg/core"
+	"github.com/hyperledger-firefly/common/pkg/fftypes"
+	"github.com/hyperledger-firefly/firefly/pkg/core"
 	log "github.com/sirupsen/logrus"
 )
 

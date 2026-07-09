@@ -28,7 +28,7 @@ builds:
     main: ./ffperf
     binary: ffperf
     ldflags:
-      - "-s -w -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Version={{.Version}}' -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Commit={{.Commit}}' -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Date={{.Date}}'"
+      - "-s -w -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Version={{.Version}}' -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Commit={{.Commit}}' -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Date={{.Date}}'"
 archives:
   - name_template: >-
       {{ .ProjectName }}_{{ .Version }}_

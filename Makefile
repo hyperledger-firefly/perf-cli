@@ -23,12 +23,12 @@ LINT := $(GOBIN)/golangci-lint
 
 all: build
 build: ## Builds all go code
-		cd ffperf && go build -ldflags="-X 'github.com/hyperledger/firefly-perf-cli/internal/version.Version=$(VERSION)' -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Date=$(DATE)' -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Commit=$(GITREF)'"
+		cd ffperf && go build -ldflags="-X 'github.com/hyperledger-firefly/perf-cli/internal/version.Version=$(VERSION)' -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Date=$(DATE)' -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Commit=$(GITREF)'"
 install: ## Installs the package
-		cd ffperf && go install -ldflags="-X 'github.com/hyperledger/firefly-perf-cli/internal/version.Version=$(VERSION)' -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Date=$(DATE)' -X 'github.com/hyperledger/firefly-perf-cli/internal/version.Commit=$(GITREF)'"
+		cd ffperf && go install -ldflags="-X 'github.com/hyperledger-firefly/perf-cli/internal/version.Version=$(VERSION)' -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Date=$(DATE)' -X 'github.com/hyperledger-firefly/perf-cli/internal/version.Commit=$(GITREF)'"
 
 docker:
-	docker build --platform linux/amd64 --build-arg BUILD_VERSION=$(VERSION) . -t ghcr.io/hyperledger/firefly-perf-cli
+	docker build --platform linux/amd64 --build-arg BUILD_VERSION=$(VERSION) . -t ghcr.io/hyperledger-firefly/perf-cli
 
 lint: ${LINT} ## Checks and reports lint errors
 		GOGC=20 $(LINT) run -v --timeout 5m
