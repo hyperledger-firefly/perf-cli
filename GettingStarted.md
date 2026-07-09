@@ -21,8 +21,8 @@
   ```bash
   # From the firefly-perf-cli folder
   mkdir ~/ffperf-testing
-  git clone git@github.com:hyperledger/firefly.git ~/ffperf-testing/firefly
-  git clone git@github.com:hyperledger/firefly-perf-cli.git ~/ffperf-testing/firefly-perf-cli
+  git clone git@github.com:hyperledger-firefly/firefly.git ~/ffperf-testing/firefly
+  git clone git@github.com:hyperledger-firefly/perf-cli.git ~/ffperf-testing/firefly-perf-cli
   cp scripts/getLogs.sh ~/ffperf-testing/getLogs.sh
   cp scripts/prep.sh ~/ffperf-testing/prep.sh
   ```
@@ -65,7 +65,7 @@ git checkout ...
   # ex: ./prep.sh oldStack newStack geth
   ```
 - Once script is done, you'll be given a command to run the perf test. Paste that in to the terminal to start the test.
-- \*\*Please save the markdown row that is printed. You will need to use this to create an issue in https://github.com/hyperledger/firefly/issues/519
+- \*\*Please save the markdown row that is printed. You will need to use this to create an issue in https://github.com/hyperledger-firefly/firefly/issues/519
 
 ## Getting Logs
 

@@ -22,9 +22,9 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/hyperledger/firefly-common/pkg/fftypes"
-	"github.com/hyperledger/firefly-common/pkg/wsclient"
-	"github.com/hyperledger/firefly/pkg/core"
+	"github.com/hyperledger-firefly/common/pkg/fftypes"
+	"github.com/hyperledger-firefly/common/pkg/wsclient"
+	"github.com/hyperledger-firefly/firefly/pkg/core"
 )
 
 type RunnerConfig struct {

@@ -9,8 +9,8 @@ import (
 	"net/url"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/hyperledger/firefly-common/pkg/fftypes"
-	"github.com/hyperledger/firefly/pkg/core"
+	"github.com/hyperledger-firefly/common/pkg/fftypes"
+	"github.com/hyperledger-firefly/firefly/pkg/core"
 )
 
 type testBase struct {
@@ -77,7 +77,7 @@ func (t *testBase) uploadBlob(blob []byte, hash [32]byte, nodeURL string) (strin
 		return "", nil
 	}
 	if resp.StatusCode() != 201 {
-		return "", fmt.Errorf(string(resp.Body()))
+		return "", fmt.Errorf("%s", resp.Body())
 	}
 	if *data.Blob.Hash != hash {
 		return "", fmt.Errorf("blob hash was not equal")
@@ -102,7 +102,7 @@ func (t *testBase) downloadAndVerifyBlob(nodeURL, id string, expectedHash [32]by
 		return err
 	}
 	if res.StatusCode() != 200 {
-		return fmt.Errorf(string(res.Body()))
+		return fmt.Errorf("%s", res.Body())
 	}
 	actualHash := sha256.Sum256(blob)
 	if actualHash != expectedHash {

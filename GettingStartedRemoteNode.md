@@ -26,7 +26,7 @@ Note: you must create a FireFly token pool before running either of the remote e
   ```bash
   # From the firefly-perf-cli folder
   mkdir ~/ffperf-testing
-  git clone git@github.com:hyperledger/firefly-perf-cli.git ~/ffperf-testing/firefly-perf-cli
+  git clone git@github.com:hyperledger-firefly/perf-cli.git ~/ffperf-testing/firefly-perf-cli
   cp scripts/getLogs.sh ~/ffperf-testing/getLogs.sh
   cp scripts/prepForRemote.sh ~/ffperf-testing/prepForRemote.sh
   ```
