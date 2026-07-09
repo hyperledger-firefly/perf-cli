@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/firefly-perf-cli/internal/version"
+	"github.com/hyperledger-firefly/perf-cli/internal/version"
 	"gopkg.in/yaml.v3"
 
 	"github.com/spf13/cobra"

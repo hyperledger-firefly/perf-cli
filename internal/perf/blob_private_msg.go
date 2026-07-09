@@ -5,10 +5,10 @@ import (
 	"math/big"
 	"net/url"
 
-	"github.com/hyperledger/firefly-perf-cli/internal/conf"
-	"github.com/hyperledger/firefly/pkg/core"
+	"github.com/hyperledger-firefly/perf-cli/internal/conf"
+	"github.com/hyperledger-firefly/firefly/pkg/core"
 
-	"github.com/hyperledger/firefly-common/pkg/fftypes"
+	"github.com/hyperledger-firefly/common/pkg/fftypes"
 )
 
 type blobPrivate struct {

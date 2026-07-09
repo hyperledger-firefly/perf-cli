@@ -155,6 +155,6 @@ echo '```'
 
 # Create markdown for Perf Test
 #printf "\n${RED}*** Before Starting Test ***${NC}\n"
-#printf "${PURPLE}*** Add the following entry to https://github.com/hyperledger/firefly/issues/519 ***${NC}\n"
+#printf "${PURPLE}*** Add the following entry to https://github.com/hyperledger-firefly/firefly/issues/519 ***${NC}\n"
 #printf "\n| $(uuidgen) | $(TZ=":US/Eastern" date +%m_%d_%Y_%I_%M_%p) | *Add Snapshot After Test* | $(TZ=":US/Eastern" date +%m_%d_%Y_%I_%M_%p) | *Add After Test* | *Add After Test* | $BLOCKCHAIN_PROVIDER | *Add Num Broadcasts* | *Add Num Private* | *Add Num Minters* | *Add Num On-Chain* | *Add related Github Issue* | $(cd $BASE_PATH/firefly;git rev-parse --short HEAD) | *Add After Test* | $(echo $(jq -r 'to_entries[] | "\(.key):\(.value .sha)"' $BASE_PATH/firefly/manifest.json)// )|\n"
 

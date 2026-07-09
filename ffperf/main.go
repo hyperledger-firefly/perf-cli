@@ -19,7 +19,7 @@ package main
 import (
 	"os"
 
-	"github.com/hyperledger/firefly-perf-cli/cmd"
+	"github.com/hyperledger-firefly/perf-cli/cmd"
 )
 
 func main() {

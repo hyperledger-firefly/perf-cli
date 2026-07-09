@@ -22,10 +22,10 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/hyperledger/firefly-perf-cli/internal/conf"
+	"github.com/hyperledger-firefly/perf-cli/internal/conf"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/hyperledger/firefly-common/pkg/fftypes"
+	"github.com/hyperledger-firefly/common/pkg/fftypes"
 )
 
 type customEthereum struct {
