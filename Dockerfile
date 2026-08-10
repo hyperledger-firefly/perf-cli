@@ -1,6 +1,6 @@
 ARG BUILD_VERSION=canary
 
-FROM golang:1.21.12-alpine as builder
+FROM golang:1.26.5-alpine as builder
 
 RUN apk add make gcc build-base curl git
 WORKDIR /firefly-perf-cli
@@ -9,7 +9,7 @@ RUN go mod download
 ADD . .
 RUN make VERSION=$BUILD_VERSION build
 
-FROM alpine:3.15 as final
+FROM alpine:3.24 as final
 WORKDIR /firefly-perf-cli
 COPY --from=builder /firefly-perf-cli/ffperf/ffperf ./ffperf
 RUN ln -s /firefly-perf-cli/ffperf /usr/bin/ffperf
