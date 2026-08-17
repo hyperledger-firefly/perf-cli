@@ -15,8 +15,8 @@
                 "sort-keys-recursive": "^2.1.2"
             },
             "devDependencies": {
-                "@types/chai": "^4.1.7",
-                "@types/mocha": "^5.2.5",
+                "@types/chai": "^5.2.3",
+                "@types/mocha": "^10.0.10",
                 "@types/node": "^26.1.2",
                 "@types/sinon": "^22.0.0",
                 "@types/sinon-chai": "^4.0.0",
@@ -825,21 +825,34 @@
             "license": "MIT"
         },
         "node_modules/@types/chai": {
-            "version": "4.3.4",
-            "resolved": "https://registry.npmjs.org/@types/chai/-/chai-4.3.4.tgz",
-            "integrity": "sha512-KnRanxnpfpjUTqTCXslZSEdLfXExwgNxYPdiO2WGUj8+HDjFi8R3k5RVKPeSCzLjCcshCAtVO2QBbVuAV4kTnw==",
-            "dev": true
+            "version": "5.2.3",
+            "resolved": "https://registry.npmjs.org/@types/chai/-/chai-5.2.3.tgz",
+            "integrity": "sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==",
+            "dev": true,
+            "license": "MIT",
+            "dependencies": {
+                "@types/deep-eql": "*",
+                "assertion-error": "^2.0.1"
+            }
+        },
+        "node_modules/@types/deep-eql": {
+            "version": "4.0.2",
+            "resolved": "https://registry.npmjs.org/@types/deep-eql/-/deep-eql-4.0.2.tgz",
+            "integrity": "sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==",
+            "dev": true,
+            "license": "MIT"
         },
         "node_modules/@types/mocha": {
-            "version": "5.2.7",
-            "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-5.2.7.tgz",
-            "integrity": "sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==",
-            "dev": true
+            "version": "10.0.10",
+            "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-10.0.10.tgz",
+            "integrity": "sha512-xPyYSz1cMPnJQhl0CLMH68j3gprKZaTjG3s5Vi+fDgx+uhG9NOXwbVt52eFS8ECyXhyKcjDLCBEqBExKuiZb7Q==",
+            "dev": true,
+            "license": "MIT"
         },
         "node_modules/@types/node": {
-            "version": "26.1.2",
-            "resolved": "https://registry.npmjs.org/@types/node/-/node-26.1.2.tgz",
-            "integrity": "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg==",
+            "version": "26.2.0",
+            "resolved": "https://registry.npmjs.org/@types/node/-/node-26.2.0.tgz",
+            "integrity": "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==",
             "license": "MIT",
             "dependencies": {
                 "undici-types": "~8.3.0"
@@ -1327,6 +1340,16 @@
             "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
             "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
             "dev": true
+        },
+        "node_modules/assertion-error": {
+            "version": "2.0.1",
+            "resolved": "https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz",
+            "integrity": "sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==",
+            "dev": true,
+            "license": "MIT",
+            "engines": {
+                "node": ">=12"
+            }
         },
         "node_modules/async": {
             "version": "3.2.4",
@@ -5002,21 +5025,31 @@
             "dev": true
         },
         "@types/chai": {
-            "version": "4.3.4",
-            "resolved": "https://registry.npmjs.org/@types/chai/-/chai-4.3.4.tgz",
-            "integrity": "sha512-KnRanxnpfpjUTqTCXslZSEdLfXExwgNxYPdiO2WGUj8+HDjFi8R3k5RVKPeSCzLjCcshCAtVO2QBbVuAV4kTnw==",
+            "version": "5.2.3",
+            "resolved": "https://registry.npmjs.org/@types/chai/-/chai-5.2.3.tgz",
+            "integrity": "sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==",
+            "dev": true,
+            "requires": {
+                "@types/deep-eql": "*",
+                "assertion-error": "^2.0.1"
+            }
+        },
+        "@types/deep-eql": {
+            "version": "4.0.2",
+            "resolved": "https://registry.npmjs.org/@types/deep-eql/-/deep-eql-4.0.2.tgz",
+            "integrity": "sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==",
             "dev": true
         },
         "@types/mocha": {
-            "version": "5.2.7",
-            "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-5.2.7.tgz",
-            "integrity": "sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==",
+            "version": "10.0.10",
+            "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-10.0.10.tgz",
+            "integrity": "sha512-xPyYSz1cMPnJQhl0CLMH68j3gprKZaTjG3s5Vi+fDgx+uhG9NOXwbVt52eFS8ECyXhyKcjDLCBEqBExKuiZb7Q==",
             "dev": true
         },
         "@types/node": {
-            "version": "26.1.2",
-            "resolved": "https://registry.npmjs.org/@types/node/-/node-26.1.2.tgz",
-            "integrity": "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg==",
+            "version": "26.2.0",
+            "resolved": "https://registry.npmjs.org/@types/node/-/node-26.2.0.tgz",
+            "integrity": "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==",
             "requires": {
                 "undici-types": "~8.3.0"
             }
@@ -5265,6 +5298,12 @@
             "version": "2.0.1",
             "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
             "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
+            "dev": true
+        },
+        "assertion-error": {
+            "version": "2.0.1",
+            "resolved": "https://registry.npmjs.org/assertion-error/-/assertion-error-2.0.1.tgz",
+            "integrity": "sha512-Izi8RQcffqCeNVgFigKli1ssklIbpHnCYc6AknXGYoB6grJqyeby7jv12JUQgmTAnIDnbck1uxksT4dzN3PWBA==",
             "dev": true
         },
         "async": {
