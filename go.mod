@@ -7,14 +7,14 @@ toolchain go1.26.4
 require (
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/hyperledger-firefly/common v1.6.5
-	github.com/hyperledger-firefly/firefly v1.5.0-rc.2
+	github.com/hyperledger-firefly/firefly v1.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.24.1
 	github.com/prometheus/client_model v0.6.2
-	github.com/sirupsen/logrus v1.9.4
+	github.com/sirupsen/logrus v1.10.0
 	github.com/spf13/cobra v1.10.2
 	github.com/spf13/viper v1.21.0
-	golang.org/x/time v0.12.0
+	golang.org/x/time v0.15.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
