@@ -1,6 +1,6 @@
 ARG BUILD_VERSION=canary
 
-FROM golang:1.26.5-alpine as builder
+FROM golang:1.26.6-alpine as builder
 
 RUN apk add make gcc build-base curl git
 WORKDIR /firefly-perf-cli
