@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,13 +24,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
-  "iteration": 1646344422400,
+  "id": 2,
   "links": [],
   "liveNow": true,
   "panels": [
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -36,16 +42,32 @@
       },
       "id": 10,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "HTTP",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -57,6 +79,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -101,17 +124,20 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "rate(ff_apiserver_rest_requests_total{instance=\"$test_node\"}[$__rate_interval])",
@@ -133,6 +159,25 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -146,12 +191,51 @@
       "legend": {
         "show": true
       },
-      "pluginVersion": "8.3.3",
+      "options": {
+        "calculate": false,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Spectral",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "mode": "single",
+          "showColorScale": false,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.4.2",
       "reverseYBuckets": false,
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "sum(rate(ff_apiserver_rest_request_duration_seconds_bucket{instance=\"$test_node\"}[$__rate_interval])) by (le)",
@@ -180,6 +264,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -188,10 +276,23 @@
       },
       "id": 2,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Broadcast",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -223,22 +324,29 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_broadcast_submitted_total{instance=\"$test_node\"}",
+          "expr": "ff_broadcast_submitted_total{instance=\"$test_node\"}+ff_mint_submitted_total{instance=\"$test_node\"}",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -246,6 +354,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -277,17 +389,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_broadcast_confirmed_total{instance=\"$test_node\"}",
@@ -300,6 +417,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -331,22 +452,29 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_broadcast_rejected_total{instance=\"$test_node\"}",
+          "expr": "ff_broadcast_rejected_total{instance=\"$test_node\"} or vector(0)",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -363,6 +491,25 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -376,12 +523,51 @@
       "legend": {
         "show": true
       },
-      "pluginVersion": "8.3.3",
+      "options": {
+        "calculate": false,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Spectral",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "mode": "single",
+          "showColorScale": false,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.4.2",
       "reverseYBuckets": false,
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "sum(rate(ff_broadcast_histogram_bucket{instance=\"$test_node\"}[$__rate_interval])) by (le)",
@@ -409,6 +595,10 @@
       "yBucketBound": "auto"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -440,17 +630,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_apiserver_rest_requests_total{route=~\"/api/v1/namespaces/{ns}/messages/broadcast\",code=~\"200|202\",instance=\"$test_node\"}",
@@ -464,6 +659,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -499,23 +698,30 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/broadcast\",code=\"500\",instance=\"$test_node\"}",
+          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/broadcast\",code=\"500\",instance=\"$test_node\"} or vector(0)",
           "format": "time_series",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -523,12 +729,19 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -540,6 +753,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -579,23 +793,28 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_broadcast_submitted_total{instance=\"$test_node\"}-ff_broadcast_confirmed_total{instance=\"$test_node\"}+ff_broadcast_rejected_total{instance=\"$test_node\"}",
+          "expr": "sum(ff_broadcast_submitted_total{instance=\"firefly_core_0:5108\"} + ff_mint_confirmed_total{instance=\"firefly_core_0:5108\"} - ff_broadcast_confirmed_total{instance=\"firefly_core_0:5108\"}) + (ff_broadcast_rejected_total{instance=\"firefly_core_0:5108\"} or vector(0))",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -603,6 +822,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -610,6 +833,9 @@
             "mode": "fixed"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -621,6 +847,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -661,23 +888,28 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/broadcast\",code=\"500\",instance=\"$test_node\"}",
+          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/broadcast\",code=\"500\",instance=\"$test_node\"} or vector(0)",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{code}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -686,6 +918,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -694,10 +930,23 @@
       },
       "id": 31,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Private Message",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -729,17 +978,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_private_msg_submitted_total{instance=\"$test_node\"}",
@@ -752,6 +1006,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -783,17 +1041,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_private_msg_confirmed_total{instance=\"$test_node\"}",
@@ -806,6 +1069,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -837,22 +1104,29 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_private_msg_rejected_total{instance=\"$test_node\"}",
+          "expr": "ff_private_msg_rejected_total{instance=\"$test_node\"} or vector(0)",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -869,6 +1143,25 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -882,12 +1175,51 @@
       "legend": {
         "show": true
       },
-      "pluginVersion": "8.3.3",
+      "options": {
+        "calculate": false,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Spectral",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "mode": "single",
+          "showColorScale": false,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.4.2",
       "reverseYBuckets": false,
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "sum(rate(ff_private_msg_histogram_bucket{instance=\"$test_node\"}[$__rate_interval])) by (le)",
@@ -915,6 +1247,10 @@
       "yBucketBound": "auto"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -946,17 +1282,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_apiserver_rest_requests_total{route=~\"/api/v1/namespaces/{ns}/messages/private\",code=~\"202\",instance=\"$test_node\"}",
@@ -970,6 +1311,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1006,23 +1351,30 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/private\",code=\"500\",instance=\"$test_node\"}",
+          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/private\",code=\"500\",instance=\"$test_node\"} or vector(0)",
           "format": "time_series",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1030,12 +1382,19 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1047,6 +1406,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1086,23 +1446,28 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_private_msg_submitted_total{instance=\"$test_node\"}-ff_private_msg_confirmed_total{instance=\"$test_node\"}+ff_private_msg_rejected_total{instance=\"$test_node\"}",
+          "expr": "sum(ff_private_msg_submitted_total{instance=\"$test_node\"}-ff_private_msg_confirmed_total{instance=\"$test_node\"}) + max(ff_private_msg_rejected_total{instance=\"$test_node\"} or vector(0))",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1110,6 +1475,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1117,6 +1486,9 @@
             "mode": "fixed"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1128,6 +1500,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1172,23 +1545,28 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/private\",code=\"500\",instance=\"$test_node\"}",
+          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/messages/private\",code=\"500\",instance=\"$test_node\"} or vector(0)",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{code}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1197,6 +1575,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1205,10 +1587,23 @@
       },
       "id": 18,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Mint",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1240,17 +1635,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_mint_submitted_total{instance=\"$test_node\"}",
@@ -1263,6 +1663,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1294,17 +1698,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_mint_confirmed_total{instance=\"$test_node\"}",
@@ -1317,6 +1726,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1348,22 +1761,29 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_mint_rejected_total{instance=\"$test_node\"}",
+          "expr": "ff_mint_rejected_total{instance=\"$test_node\"} or vector(0)",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1380,6 +1800,25 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 12,
@@ -1393,12 +1832,51 @@
       "legend": {
         "show": true
       },
-      "pluginVersion": "8.3.3",
+      "options": {
+        "calculate": false,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Spectral",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "mode": "single",
+          "showColorScale": false,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "s"
+        }
+      },
+      "pluginVersion": "10.4.2",
       "reverseYBuckets": false,
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "sum(rate(ff_mint_histogram_bucket{instance=\"$test_node\"}[$__rate_interval])) by (le)",
@@ -1426,6 +1904,10 @@
       "yBucketBound": "auto"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1457,17 +1939,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_apiserver_rest_requests_total{route=~\"/api/v1/namespaces/{ns}/tokens/mint\",code=~\"200|202\",instance=\"$test_node\"}",
@@ -1481,6 +1968,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1532,23 +2023,30 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_apiserver_rest_requests_total{route=~\"/api/v1/namespaces/{ns}/tokens/mint\",code=\"500\",instance=\"$test_node\"}",
+          "expr": "ff_apiserver_rest_requests_total{route=~\"/api/v1/namespaces/{ns}/tokens/mint\",code=\"500\",instance=\"$test_node\"} or vector(0)",
           "format": "time_series",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1556,12 +2054,19 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1573,6 +2078,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1612,23 +2118,28 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_mint_submitted_total{instance=\"$test_node\"}-ff_mint_confirmed_total{instance=\"$test_node\"}+ff_mint_rejected_total{instance=\"$test_node\"}",
+          "expr": "sum(ff_mint_submitted_total{instance=\"$test_node\"}-ff_mint_confirmed_total{instance=\"$test_node\"}) + max(ff_mint_rejected_total{instance=\"$test_node\"} or vector(0))",
           "interval": "",
           "legendFormat": "",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1636,6 +2147,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1643,6 +2158,9 @@
             "mode": "fixed"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1654,6 +2172,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1714,23 +2233,28 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/tokens/mint\",code=\"500\",instance=\"$test_node\"}",
+          "expr": "ff_apiserver_rest_requests_total{route=\"/api/v1/namespaces/{ns}/tokens/mint\",code=\"500\",instance=\"$test_node\"} or vector(0)",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{code}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1739,6 +2263,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1747,10 +2275,23 @@
       },
       "id": 16,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Batchpin",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1782,17 +2323,22 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "ff_batchpin_total{instance=\"$test_node\"}",
@@ -1805,12 +2351,19 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feg3oignv9c00d"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1822,6 +2375,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1866,16 +2420,19 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "feg3oignv9c00d"
           },
           "exemplar": true,
           "expr": "(ff_broadcast_submitted_total+ff_private_msg_submitted_total)/ff_batchpin_total",
@@ -1888,9 +2445,8 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
-  "schemaVersion": 34,
-  "style": "dark",
+  "refresh": "",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -1899,6 +2455,10 @@
           "selected": false,
           "text": "firefly_core_0:5108",
           "value": "firefly_core_0:5108"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "feg3oignv9c00d"
         },
         "definition": "label_values(ff_apiserver_rest_requests_total, instance)",
         "description": "Instance being tested and monitored",
@@ -1927,7 +2487,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "FF Performance",
-  "uid": "lNnIS4A7z",
-  "version": 101,
+  "uid": "lNnIS4A7z1",
+  "version": 7,
   "weekStart": ""
 }
